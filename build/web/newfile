@@ -1,0 +1,288 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<style>
+    .nav-link {
+        display: flex;
+        align-items: center; /* Căn dòng Hello name và icon theo chiều dọc */
+    }
+
+    .nav-link img {
+        margin-right: 5px;
+    }
+    .nav-item:last-child {
+        margin-right: 0; /* Không có margin cho mục cuối cùng */
+    }
+    .nav-item {
+        position: relative;
+        margin-right: 20px;
+    }
+
+    /*    .nav-item::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background-color: #fff;
+            transition: width 0.3s ease, left 0.3s ease;
+            transform: translateX(-50%);
+        }*/
+
+    .nav-link:hover + .nav-item::after,
+    .nav-item:hover::after {
+        width: calc(100%);
+    }
+    .nav-link {
+        display: inline-block;
+        position: relative;
+    }
+
+    .nav-link img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        transition: transform 0.3s;
+    }
+
+    /*    .nav-link:hover img {
+            transform: scale(1.2);
+        }*/
+    .nav-link {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-link:hover {
+        transform: scale(1.3);
+        transition: transform 0.3s;
+    }
+/*    .custom-badge {
+        background-color: #8034eb;
+        color: black;  Đảm bảo màu chữ phù hợp 
+    }*/
+</style>
+<!--begin of menu-->
+<nav class="navbar navbar-expand-md navbar-light bg-dark" style="position: fixed; top: 0; width:100%;  z-index: 100000;">
+    <div class="container">
+        <img src="images/gamepad_774039.png" width="60px" height="auto" alt="alt"/>
+        <a class="navbar-brand" style="color: white; margin-left: 7px"  href="home">LDTGear</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+            <ul class="navbar-nav m-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home">
+                        <img src="images/home_10536099.png" alt="Avatar" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 5px;">
+                    </a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="shop">                        
+                        <img src="images/shopping-cart.png" alt="Avatar" style="width: 30px; height: 30px;margin-right: 5px;">
+                    </a>
+                </li> 
+
+                <%--  <c:if test="${sessionScope.acc.isSell == 1}">
+                     <li class="nav-item">
+                         <a class="nav-link" href="manager">Manager Product</a>
+                     </li>
+                 </c:if> --%>
+                <c:if test="${sessionScope.acc != null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="EditProfile.jsp">
+                            <!--<i class="fa-thin fa-user"></i>-->
+                            <img src="images/staff_1319004.png" alt="" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 5px;">
+                        </a>                  
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="EditProfile.jsp">
+                            <img src="images/bell_12661568.png" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 5px;">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">
+                            <img src="images/exit.png" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 5px;">
+                        </a>
+                    </li> 
+                </c:if>
+                <c:if test="${sessionScope.acc == null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login">Login</a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.acc == null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="forgotPassword">Forgot Password</a>
+                    </li>
+                </c:if>
+                <%--<c:if test="${sessionScope.acc != null}">--%>
+                <!--                    <li class="nav-item">
+                                        <a class="nav-link" href="EditProfile.jsp">
+                                            <img src="images/bell_12661568.png" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 5px;">
+                                        </a>
+                                    </li>-->
+                <%--</c:if>--%>
+                <%--  <c:if test="${sessionScope.acc.isAdmin == 1}">
+                     <li class="nav-item">
+                         <a class="nav-link" href="statistic">Statistic</a>
+                     </li>
+                 </c:if> --%>
+            </ul>
+
+            <form action="search" method="post" class="form-inline my-2 my-lg-0 badge custom-badge">
+                <a class="btn btn-success btn-sm ml-3" href="managerCart">
+                    <i class="fa fa-shopping-cart"></i> <span style="font-size: 14px;">Cart</span>
+                    <b><span id="amountCart" class="badge badge-light" style="color:black; font-size: 12px"></span></b>
+                </a>
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+
+<!--end of menu Hello ${sessionScope.acc.user}-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <title>Login Form</title>
+        <style>
+            .btn-primary {
+                color: #fff;
+                background-color: #8102f7;
+                border-color: #8102f7;
+            }
+            .btn-primary:hover {
+                background-color: #c403ff !important;
+            }
+            .btn-success {
+                color: #fff;
+                background-color: #8102f7;
+                border-color: #8102f7;
+            }
+            .btn-success:hover {
+                background-color: #c403ff !important;
+            }
+            #logreg-forms {
+                width: 412px;
+                margin: 20vh auto;
+                background-color: #f3f3f3;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            }
+        </style>
+    </head>
+    <body>
+        <jsp:include page="Menu.jsp"></jsp:include>
+
+            <div id="logreg-forms">
+            <c:if test="${error!=null }">
+                <div class="alert alert-danger" role="alert">
+                    ${error}
+                </div>
+            </c:if>
+            <c:if test="${mess!=null }">
+                <div class="alert alert-success" role="alert">
+                    ${mess}
+                </div>
+            </c:if>
+            <form class="form-signin" action="login" method="post">
+                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>  
+                <input name="user" value="${username}"  type="text" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
+                <input name="pass" value="${password}" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+
+                <div class="form-group form-check">
+                    <input name="remember" value="1" type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                </div>
+
+                <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+                <hr>
+                <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
+            </form>
+
+            <form action="signup" method="post" class="form-signup">
+                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign up</h1>
+                <input name="user" type="text" id="user-name" class="form-control" placeholder="User name" required="" autofocus="">
+                <input name="pass" type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
+                <input name="repass" type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="">
+                <input name="email" type="email" id="email" class="form-control" placeholder="Email" required="" autofocus="">
+                <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
+                <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
+            </form>
+            <br>
+
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            function toggleResetPswd(e) {
+                e.preventDefault();
+                $('#logreg-forms .form-signin').toggle() // display:block or none
+                $('#logreg-forms .form-reset').toggle() // display:block or none
+            }
+
+            function toggleSignUp(e) {
+                e.preventDefault();
+                $('#logreg-forms .form-signin').toggle(); // display:block or none
+                $('#logreg-forms .form-signup').toggle(); // display:block or none
+            }
+
+            $(() => {
+                // Login Register Form
+                $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+                $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+                $('#logreg-forms #btn-signup').click(toggleSignUp);
+                $('#logreg-forms #cancel_signup').click(toggleSignUp);
+            })
+
+            window.addEventListener("load", function loadAmountCart() {
+                $.ajax({
+                    url: "/WebsiteBanGiay/loadAllAmountCart",
+                    type: "get", //send it through get method
+                    data: {
+
+                    },
+                    success: function (responseData) {
+                        document.getElementById("amountCart").innerHTML = responseData;
+                    }
+                });
+            }, false);
+        </script>
+    </body>
+</html>
